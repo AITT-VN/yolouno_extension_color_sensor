@@ -48,11 +48,9 @@ COLOR = {
 class TCS34725:
     def __init__(self, address=0x29):
         self.address = address
-        scl_pin = machine.Pin(SCL_PIN)
-        sda_pin = machine.Pin(SDA_PIN)
-
         try:
-            self.i2c = TCS34725(machine.SoftI2C(scl=scl_pin, sda=sda_pin), self.address)
+            self.i2c = machine.SoftI2C(scl=machine.Pin(SCL_PIN), sda=machine.Pin(SDA_PIN))
+            #self.i2c = TCS34725(i2c, self.address)
         except:
             print('TCS34725 not found')
             raise Exception('TCS34725 not found')
@@ -200,7 +198,7 @@ class TCS34725:
         r, g, b = self.html_rgb()
         return "{0:02x}{1:02x}{2:02x}".format(int(r),int(g),int(b))
 
-    def read(self, color):
+    def read_color(self, color):
         '''
         To read value R of color sensor at port 0: 
         color_sensor.read(0, 'r')

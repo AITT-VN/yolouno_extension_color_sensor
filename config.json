@@ -1,6 +1,6 @@
 {
     "name": "Cảm biến màu sắc",
-    "description": "Mục mở rộng của Yolo UNO cho cảm biến màu sắc TCS34725",
+    "description": "Thư viện cho module cảm biến màu sắc TCS34725",
     "libs": [
         "tcs34725.py"
     ],
